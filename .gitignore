@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.translation
+
+# Local exports and test diagnostics.
+/build/
+/dist/
+/test-results/
+*.log
+
+# Temporary editor files and local environment overrides.
+*.tmp
+*.swp
+*~
+/override.cfg
+/.env
+/.env.*
+!/.env.example
+
+# Local Codex MCP settings contain the absolute project path.
+/.codex/config.toml
