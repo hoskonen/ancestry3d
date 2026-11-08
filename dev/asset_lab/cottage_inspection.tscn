@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cyvjl2j14sit1"]
+
+[ext_resource type="Script" path="res://dev/asset_lab/cottage_inspection.gd" id="1_uhn12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2nup"]
+albedo_color = Color(0.34117648, 0.36078432, 0.32941177, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hywic"]
+material = SubResource("StandardMaterial3D_s2nup")
+size = Vector2(120, 120)
+
+[sub_resource type="Environment" id="Environment_tr2tc"]
+background_mode = 1
+background_color = Color(0.20392157, 0.23529412, 0.25882354, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.79607844, 0.8392157, 0.8862745, 1)
+ambient_light_energy = 0.58
+reflected_light_source = 1
+
+[node name="CottageInspection" type="Node3D" unique_id=630521543]
+script = ExtResource("1_uhn12")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=493528578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012, 0)
+mesh = SubResource("PlaneMesh_hywic")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1203571259]
+environment = SubResource("Environment_tr2tc")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=765453971]
+transform = Transform3D(0.76604444, -0.5065235, 0.39573956, 0, 0.6156615, 0.7880107, -0.6427876, -0.6036512, 0.47162408, 0, 0, 0)
+light_color = Color(1, 0.9490196, 0.85882354, 1)
+light_angular_distance = 0.5
+shadow_enabled = true
+directional_shadow_max_distance = 42.0
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1539611200]
+transform = Transform3D(0.806405, -0.21346806, 0.551491, 0, 0.9325751, 0.36097595, -0.59136367, -0.2910928, 0.75203323, 11, 10, 15)
+projection = 1
+current = true
+size = 11.2
