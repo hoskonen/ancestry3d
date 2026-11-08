@@ -1,5 +1,7 @@
 extends Node3D
 
+const SettlementLighting = preload("settlement_lighting.gd")
+
 const PRESET_NAMES: Array[String] = [
 	"A  Top-down", "B  Angled orthographic", "C  Isometric",
 ]
@@ -26,29 +28,15 @@ const FRAMING_BLEND_SECONDS: float = 0.35
 @export var target_offset := Vector3(0.0, 0.25, 0.0)
 @export_range(1.0, 64.0, 0.1) var close_isometric_size: float = 9.5
 
-@export_group("Lighting Comparison")
-@export var night_environment: Environment = preload("night_environment.tres")
-@export var moon_color := Color("#aabbdc")
-@export var moon_energy: float = 0.15
-@export var night_fire_energy: float = 3.0
-
 var _target: Vector3 = DEFAULT_TARGET
 var _preset: int = DEFAULT_PRESET
-var _night: bool = false
 var _framing_tween: Tween
 var _framing_goal: float
 
 @onready var _camera: Camera3D = $Camera
 @onready var _preset_label: Label = $Overlay/Panel/Readout/Preset
 @onready var _camp_focus: Marker3D = $Courtyard/Campsite/CameraFocus
-@onready var _world: WorldEnvironment = $WorldEnvironment
-@onready var _sun: DirectionalLight3D = $Sun
-@onready var _fire: OmniLight3D = $Courtyard/Campsite/Firelight
-@onready var _torch: OmniLight3D = $Courtyard/Storehouse/Torchlight
-@onready var _day_environment: Environment = _world.environment
-@onready var _day_sun_color: Color = _sun.light_color
-@onready var _day_sun_energy: float = _sun.light_energy
-@onready var _day_fire_energy: float = _fire.light_energy
+@onready var _lighting: SettlementLighting = $WorldEnvironment
 
 
 func _ready() -> void:
@@ -88,7 +76,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				_target = to_local(_camp_focus.global_position)
 				_update_camera()
 			KEY_N:
-				_set_night(not _night)
+				_lighting.set_night(not _lighting.is_night)
+				_update_readout()
 			KEY_R:
 				_reset_view()
 			_:
@@ -149,22 +138,9 @@ func _stop_framing_blend() -> void:
 		_framing_tween = null
 
 
-func _set_night(enabled: bool) -> void:
-	if night_environment == null:
-		push_error("Camera experiment is missing its night Environment.")
-		return
-	_night = enabled
-	_world.environment = night_environment if _night else _day_environment
-	_sun.light_color = moon_color if _night else _day_sun_color
-	_sun.light_energy = moon_energy if _night else _day_sun_energy
-	_fire.light_energy = night_fire_energy if _night else _day_fire_energy
-	_fire.shadow_enabled = _night
-	_torch.visible = _night
-	_update_readout()
-
-
 func _update_readout() -> void:
-	_preset_label.text = "%s  |  %s" % [PRESET_NAMES[_preset], "Night" if _night else "Day"]
+	var lighting_name := "Night" if _lighting.is_night else "Day"
+	_preset_label.text = "%s  |  %s" % [PRESET_NAMES[_preset], lighting_name]
 
 
 func _bounded_size(size: float) -> float:

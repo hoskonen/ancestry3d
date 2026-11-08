@@ -1,0 +1,322 @@
+[gd_scene format=3 uid="uid://beipksg8nb32h"]
+
+[ext_resource type="Script" uid="uid://wn0dktvhk0m0" path="res://dev/playground/playground.gd" id="1_6025k"]
+[ext_resource type="Script" uid="uid://c8t0o4jgh0jrp" path="res://dev/playground/playground_environment.gd" id="2_5lumb"]
+[ext_resource type="PackedScene" uid="uid://cv1n3termhmsc" path="res://prototypes/camera_experiment/camera_experiment.tscn" id="3_0fp8n"]
+[ext_resource type="PackedScene" uid="uid://ck1adpyb0iqco" path="res://game/characters/player.tscn" id="4_i8twi"]
+[ext_resource type="Script" uid="uid://do3uqdafp24a0" path="res://game/input/player_movement_input.gd" id="5_5pg6v"]
+[ext_resource type="Script" uid="uid://dccu6pu8rr840" path="res://game/camera/orthographic_follow.gd" id="6_oavld"]
+[ext_resource type="Script" uid="uid://cdqu31blyx204" path="res://dev/playground/playground_debug.gd" id="7_8r08w"]
+[ext_resource type="Script" path="res://dev/playground/third_person_rig.gd" id="8_5lumb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tp6lj"]
+size = Vector3(96, 0.5, 96)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ktgk"]
+size = Vector3(5.7, 3.3, 4.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4oceg"]
+size = Vector3(3.6, 2.5, 3.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjphj"]
+size = Vector3(4.1, 2, 2.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4g4p"]
+size = Vector3(5.75, 1.24, 0.55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57jss"]
+size = Vector3(0.65, 1.3, 0.67)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rh2b6"]
+size = Vector3(0.48, 1.8, 2.64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4llg"]
+size = Vector3(1.34, 1.1, 0.44)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ai300"]
+size = Vector3(2.22, 1.28, 2.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bcqtm"]
+size = Vector3(2.1, 1.32, 2.55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u577q"]
+size = Vector3(1.32, 0.62, 0.46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ql3hg"]
+size = Vector3(0.68, 0.64, 0.62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6sni"]
+size = Vector3(0.92, 0.44, 0.65)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8ml2y"]
+height = 0.92
+radius = 0.74
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lljby"]
+height = 0.86
+radius = 0.37
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3skgm"]
+height = 0.32
+radius = 0.74
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hyjvn"]
+height = 1.9
+radius = 0.19
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6s2i2"]
+height = 1.9
+radius = 0.21
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7107d"]
+height = 1.9
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fcq27"]
+height = 1.9
+radius = 0.16
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w0bsq"]
+height = 1.9
+radius = 0.18
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o1h2y"]
+height = 1.9
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rwjk2"]
+height = 1.9
+radius = 0.15
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i8i3k"]
+height = 1.9
+radius = 0.14
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vvjec"]
+height = 1.9
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0uce8"]
+height = 1.9
+radius = 0.18
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3dr6i"]
+height = 1.9
+radius = 0.17
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t85h5"]
+height = 1.9
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g6qd2"]
+height = 1.9
+radius = 0.17
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l51o1"]
+height = 1.9
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mlql7"]
+height = 1.9
+radius = 0.15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31evm"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.09411765, 0.11764706, 0.14509805, 0.92941177)
+
+[node name="Playground" type="Node3D" unique_id=1320438618]
+script = ExtResource("1_6025k")
+
+[node name="Environment" type="Node3D" parent="." unique_id=1238633362]
+script = ExtResource("2_5lumb")
+
+[node name="Settlement" parent="Environment" unique_id=172237787 instance=ExtResource("3_0fp8n")]
+
+[node name="Collision" type="StaticBody3D" parent="Environment" unique_id=149354000]
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="Environment/Collision" unique_id=155592410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_tp6lj")
+
+[node name="Hall" type="CollisionShape3D" parent="Environment/Collision" unique_id=453222736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 1.65, -3.7)
+shape = SubResource("BoxShape3D_7ktgk")
+
+[node name="Cottage" type="CollisionShape3D" parent="Environment/Collision" unique_id=858286658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.25, -3.8)
+shape = SubResource("BoxShape3D_4oceg")
+
+[node name="Storehouse" type="CollisionShape3D" parent="Environment/Collision" unique_id=1312053664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 1, 5.1)
+shape = SubResource("BoxShape3D_qjphj")
+
+[node name="BoundaryWall" type="CollisionShape3D" parent="Environment/Collision" unique_id=1175209310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.62, 5.8)
+shape = SubResource("BoxShape3D_n4g4p")
+
+[node name="BoundaryPier" type="CollisionShape3D" parent="Environment/Collision" unique_id=1340362843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85, 0.65, 5.8)
+shape = SubResource("BoxShape3D_57jss")
+
+[node name="RuinWall" type="CollisionShape3D" parent="Environment/Collision" unique_id=988512340]
+transform = Transform3D(0.99939084, 0, 0.034899496, 0, 1, 0, -0.034899496, 0, 0.99939084, 8.92, 0.9, 4.65)
+shape = SubResource("BoxShape3D_rh2b6")
+
+[node name="RuinReturn" type="CollisionShape3D" parent="Environment/Collision" unique_id=961631994]
+transform = Transform3D(0.9986295, 0, 0.05233596, 0, 1, 0, -0.05233596, 0, 0.9986295, 9.62, 0.55, 2.67)
+shape = SubResource("BoxShape3D_x4llg")
+
+[node name="WestShelter" type="CollisionShape3D" parent="Environment/Collision" unique_id=2032113403]
+transform = Transform3D(0.9612617, 0, 0.27563736, 0, 1, 0, -0.27563736, 0, 0.9612617, -6.02, 0.64, 7.05)
+shape = SubResource("BoxShape3D_ai300")
+
+[node name="EastShelter" type="CollisionShape3D" parent="Environment/Collision" unique_id=1045901097]
+transform = Transform3D(0.9396926, 0, -0.34202012, 0, 1, 0, 0.34202012, 0, 0.9396926, -2.35, 0.66, 7.75)
+shape = SubResource("BoxShape3D_bcqtm")
+
+[node name="Trough" type="CollisionShape3D" parent="Environment/Collision" unique_id=46489282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.31, -1.65)
+shape = SubResource("BoxShape3D_u577q")
+
+[node name="Crate" type="CollisionShape3D" parent="Environment/Collision" unique_id=5530711]
+transform = Transform3D(0.9781476, 0, 0.2079117, 0, 1, 0, -0.2079117, 0, 0.9781476, 4.2, 0.32, 3.32)
+shape = SubResource("BoxShape3D_ql3hg")
+
+[node name="CampBoulder" type="CollisionShape3D" parent="Environment/Collision" unique_id=36244206]
+transform = Transform3D(0.98162717, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.98162717, -1.17, 0.22, 11.62)
+shape = SubResource("BoxShape3D_m6sni")
+
+[node name="Well" type="CollisionShape3D" parent="Environment/Collision" unique_id=1994896050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.46, 2.85)
+shape = SubResource("CylinderShape3D_8ml2y")
+
+[node name="Barrel" type="CollisionShape3D" parent="Environment/Collision" unique_id=1764887839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0.43, 3.45)
+shape = SubResource("CylinderShape3D_lljby")
+
+[node name="FireRing" type="CollisionShape3D" parent="Environment/Collision" unique_id=684867134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.16, 9.5)
+shape = SubResource("CylinderShape3D_3skgm")
+
+[node name="PineTrunk1" type="CollisionShape3D" parent="Environment/Collision" unique_id=278991631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 0.95, 4.2)
+shape = SubResource("CylinderShape3D_hyjvn")
+
+[node name="PineTrunk2" type="CollisionShape3D" parent="Environment/Collision" unique_id=587050705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 0.95, 5.2)
+shape = SubResource("CylinderShape3D_6s2i2")
+
+[node name="PineTrunk3" type="CollisionShape3D" parent="Environment/Collision" unique_id=1354349455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7, 0.95, 1.8)
+shape = SubResource("CylinderShape3D_7107d")
+
+[node name="PineTrunk4" type="CollisionShape3D" parent="Environment/Collision" unique_id=1947006946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7, 0.95, 0.8)
+shape = SubResource("CylinderShape3D_fcq27")
+
+[node name="PineTrunk5" type="CollisionShape3D" parent="Environment/Collision" unique_id=852394649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0.95, -3.3)
+shape = SubResource("CylinderShape3D_w0bsq")
+
+[node name="PineTrunk6" type="CollisionShape3D" parent="Environment/Collision" unique_id=616693017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7, 0.95, -3.3)
+shape = SubResource("CylinderShape3D_o1h2y")
+
+[node name="PineTrunk7" type="CollisionShape3D" parent="Environment/Collision" unique_id=637750291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9, 0.95, 5.9)
+shape = SubResource("CylinderShape3D_rwjk2")
+
+[node name="PineTrunk8" type="CollisionShape3D" parent="Environment/Collision" unique_id=999460654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 0.95, 7.7)
+shape = SubResource("CylinderShape3D_i8i3k")
+
+[node name="PineTrunk9" type="CollisionShape3D" parent="Environment/Collision" unique_id=1404559355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8, 0.95, -1.9)
+shape = SubResource("CylinderShape3D_vvjec")
+
+[node name="PineTrunk10" type="CollisionShape3D" parent="Environment/Collision" unique_id=1738869344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 0.95, -8.9)
+shape = SubResource("CylinderShape3D_0uce8")
+
+[node name="PineTrunk11" type="CollisionShape3D" parent="Environment/Collision" unique_id=2021822864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 0.95, -7.5)
+shape = SubResource("CylinderShape3D_3dr6i")
+
+[node name="PineTrunk12" type="CollisionShape3D" parent="Environment/Collision" unique_id=1140766766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0.95, -8.9)
+shape = SubResource("CylinderShape3D_t85h5")
+
+[node name="PineTrunk13" type="CollisionShape3D" parent="Environment/Collision" unique_id=715984279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 0.95, 13.2)
+shape = SubResource("CylinderShape3D_g6qd2")
+
+[node name="PineTrunk14" type="CollisionShape3D" parent="Environment/Collision" unique_id=1453572748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 0.95, 10.42)
+shape = SubResource("CylinderShape3D_l51o1")
+
+[node name="PineTrunk15" type="CollisionShape3D" parent="Environment/Collision" unique_id=1677629084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.54, 0.95, 6.52)
+shape = SubResource("CylinderShape3D_mlql7")
+
+[node name="Spawn" type="Marker3D" parent="." unique_id=327292850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 2.2)
+
+[node name="Player" parent="." unique_id=527272551 instance=ExtResource("4_i8twi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 2.2)
+
+[node name="MovementInput" type="Node" parent="." unique_id=22751922]
+script = ExtResource("5_5pg6v")
+
+[node name="FollowRig" type="Node3D" parent="." unique_id=1089056418]
+script = ExtResource("6_oavld")
+
+[node name="Camera" type="Camera3D" parent="FollowRig" unique_id=1149568308]
+projection = 1
+current = true
+size = 9.5
+near = 0.15
+far = 100.0
+
+[node name="Debug" type="CanvasLayer" parent="." unique_id=1149384813]
+script = ExtResource("7_8r08w")
+
+[node name="Panel" type="PanelContainer" parent="Debug" unique_id=596456341]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31evm")
+
+[node name="Readout" type="VBoxContainer" parent="Debug/Panel" unique_id=1549530506]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Controls" type="Label" parent="Debug/Panel/Readout" unique_id=1389612959]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76862746, 0.8039216, 0.8156863, 1)
+text = "PLAYGROUND   •   WASD / left stick: move   •   C / R3: camera   •   Right stick / RMB drag: orbit   •   V / top face: iso framing   •   Wheel: zoom   •   N: light   •   R / Back: reset   •   H: HUD"
+autowrap_mode = 3
+
+[node name="Diagnostics" type="Label" parent="Debug/Panel/Readout" unique_id=1583502790]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.8980392, 0.81960785, 1)
+autowrap_mode = 3
+
+[node name="ThirdPersonRig" type="Node3D" parent="." unique_id=1496864072]
+script = ExtResource("8_5lumb")
+
+[node name="SpringArm" type="SpringArm3D" parent="ThirdPersonRig" unique_id=816977922]
+spring_length = 4.6
+margin = 0.15
+
+[node name="Camera" type="Camera3D" parent="ThirdPersonRig/SpringArm" unique_id=1441366466]
+fov = 65.0
+near = 0.12
+far = 100.0

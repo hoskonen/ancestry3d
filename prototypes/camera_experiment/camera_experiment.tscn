@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cv1n3termhmsc"]
 
 [ext_resource type="Script" uid="uid://mkpeo5p3gx87" path="res://prototypes/camera_experiment/camera_controller.gd" id="1_vajgo"]
+[ext_resource type="Script" path="res://prototypes/camera_experiment/settlement_lighting.gd" id="2_7jkv6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jkv6"]
 albedo_color = Color(0.33333334, 0.35686275, 0.31764707, 1)
@@ -2836,6 +2837,7 @@ omni_attenuation = 1.65
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1563948727]
 environment = SubResource("Environment_g8hk1")
+script = ExtResource("2_7jkv6")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1007957578]
 transform = Transform3D(0.8290376, 0.3519115, -0.43457448, 0, 0.7771459, 0.6293204, 0.5591929, -0.52173024, 0.6442832, 0, 0, 0)
