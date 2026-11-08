@@ -1,0 +1,262 @@
+[gd_scene format=3 uid="uid://b82livqmsis8f"]
+
+[ext_resource type="Script" path="res://dev/movement_lab/movement_lab.gd" id="1_u4hsi"]
+[ext_resource type="PackedScene" uid="uid://ck1adpyb0iqco" path="res://game/characters/player.tscn" id="2_0a1j4"]
+[ext_resource type="Script" path="res://game/input/player_movement_input.gd" id="3_p24m2"]
+[ext_resource type="Script" path="res://game/camera/orthographic_follow.gd" id="4_vqeo3"]
+[ext_resource type="Script" path="res://dev/movement_lab/movement_readout.gd" id="5_m4yo4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhy7b"]
+albedo_color = Color(0.3647059, 0.39607844, 0.3647059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b7fth"]
+material = SubResource("StandardMaterial3D_nhy7b")
+size = Vector3(24, 0.5, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_urouk"]
+size = Vector3(24, 0.5, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bu8b2"]
+albedo_color = Color(0.4117647, 0.43529412, 0.4392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xq5wd"]
+material = SubResource("StandardMaterial3D_bu8b2")
+size = Vector3(0.4, 2, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nj08a"]
+size = Vector3(0.4, 2, 4.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uace1"]
+albedo_color = Color(0.47843137, 0.49803922, 0.46666667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oa5co"]
+material = SubResource("StandardMaterial3D_uace1")
+size = Vector3(0.45, 1.6, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feqmk"]
+size = Vector3(0.45, 1.6, 4.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a2dn"]
+albedo_color = Color(0.50980395, 0.54901963, 0.45490196, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shd8b"]
+material = SubResource("StandardMaterial3D_4a2dn")
+size = Vector3(2.8, 0.24, 4.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74n2h"]
+size = Vector3(2.8, 0.24, 4.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ntqs"]
+albedo_color = Color(0.4392157, 0.48235294, 0.40784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_76j4e"]
+material = SubResource("StandardMaterial3D_4ntqs")
+size = Vector3(2.8, 1.6296967, 2.31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1yq5c"]
+size = Vector3(2.8, 1.6296967, 2.31)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65bej"]
+albedo_color = Color(0.50980395, 0.4, 0.34117648, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ooan"]
+material = SubResource("StandardMaterial3D_65bej")
+size = Vector3(2.8, 0.24, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5meb3"]
+size = Vector3(2.8, 0.24, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jk6ap"]
+albedo_color = Color(0.62352943, 0.57254905, 0.4117647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oqnon"]
+material = SubResource("StandardMaterial3D_jk6ap")
+size = Vector3(1.26, 0.016, 1.26)
+
+[sub_resource type="Environment" id="Environment_6bhuo"]
+background_mode = 1
+background_color = Color(0.14509805, 0.17254902, 0.19607843, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.84705883, 0.8745098, 0.89411765, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0g7l"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.09411765, 0.11764706, 0.14509805, 0.92941177)
+
+[node name="MovementLab" type="Node3D" unique_id=17790936]
+script = ExtResource("1_u4hsi")
+
+[node name="Course" type="Node3D" parent="." unique_id=1854569672]
+
+[node name="Ground" type="StaticBody3D" parent="Course" unique_id=246430298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -1)
+
+[node name="Surface" type="MeshInstance3D" parent="Course/Ground" unique_id=207401874]
+mesh = SubResource("BoxMesh_b7fth")
+
+[node name="Collider" type="CollisionShape3D" parent="Course/Ground" unique_id=373008141]
+shape = SubResource("BoxShape3D_urouk")
+
+[node name="Wall" type="StaticBody3D" parent="Course" unique_id=286245906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+
+[node name="Surface" type="MeshInstance3D" parent="Course/Wall" unique_id=843230086]
+mesh = SubResource("BoxMesh_xq5wd")
+
+[node name="Collider" type="CollisionShape3D" parent="Course/Wall" unique_id=1256664096]
+shape = SubResource("BoxShape3D_nj08a")
+
+[node name="PassageSide" type="StaticBody3D" parent="Course" unique_id=629795551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85, 0.8, 0)
+
+[node name="Surface" type="MeshInstance3D" parent="Course/PassageSide" unique_id=1206893718]
+mesh = SubResource("BoxMesh_oa5co")
+
+[node name="Collider" type="CollisionShape3D" parent="Course/PassageSide" unique_id=1929223762]
+shape = SubResource("BoxShape3D_feqmk")
+
+[node name="WalkableRamp" type="StaticBody3D" parent="Course" unique_id=549240439]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, -0.34202012, 0, 0.34202012, 0.9396926, -4.5, 0.6960852, -5.5)
+
+[node name="Surface" type="MeshInstance3D" parent="Course/WalkableRamp" unique_id=1637802827]
+mesh = SubResource("BoxMesh_shd8b")
+
+[node name="Collider" type="CollisionShape3D" parent="Course/WalkableRamp" unique_id=1755558974]
+shape = SubResource("BoxShape3D_74n2h")
+
+[node name="Ledge" type="StaticBody3D" parent="Course" unique_id=1332018449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.81484836, -8.81)
+
+[node name="Surface" type="MeshInstance3D" parent="Course/Ledge" unique_id=1277218493]
+mesh = SubResource("BoxMesh_76j4e")
+
+[node name="Collider" type="CollisionShape3D" parent="Course/Ledge" unique_id=1198730123]
+shape = SubResource("BoxShape3D_1yq5c")
+
+[node name="SteepRamp" type="StaticBody3D" parent="Course" unique_id=182393338]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0.8, 1.6600507, -5.9)
+
+[node name="Surface" type="MeshInstance3D" parent="Course/SteepRamp" unique_id=1949666435]
+mesh = SubResource("BoxMesh_4ooan")
+
+[node name="Collider" type="CollisionShape3D" parent="Course/SteepRamp" unique_id=958870420]
+shape = SubResource("BoxShape3D_5meb3")
+
+[node name="SpawnPad" type="MeshInstance3D" parent="Course" unique_id=1669775133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008, 4.5)
+mesh = SubResource("BoxMesh_oqnon")
+
+[node name="StartSign" type="Label3D" parent="Course" unique_id=1947353608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 5.45)
+pixel_size = 0.0085
+billboard = 1
+double_sided = false
+modulate = Color(0.9137255, 0.8862745, 0.8117647, 1)
+outline_modulate = Color(0.20392157, 0.21960784, 0.2, 1)
+text = "START"
+font_size = 36
+outline_size = 8
+
+[node name="PassageSign" type="Label3D" parent="Course" unique_id=243284348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.15, 2.9)
+pixel_size = 0.0085
+billboard = 1
+double_sided = false
+modulate = Color(0.9137255, 0.8862745, 0.8117647, 1)
+outline_modulate = Color(0.20392157, 0.21960784, 0.2, 1)
+text = "PASSAGE"
+font_size = 36
+outline_size = 8
+
+[node name="RampSign" type="Label3D" parent="Course" unique_id=2119444599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.15, -2.6)
+pixel_size = 0.0085
+billboard = 1
+double_sided = false
+modulate = Color(0.9137255, 0.8862745, 0.8117647, 1)
+outline_modulate = Color(0.20392157, 0.21960784, 0.2, 1)
+text = "20° RAMP"
+font_size = 36
+outline_size = 8
+
+[node name="SteepSign" type="Label3D" parent="Course" unique_id=962640831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.15, -3.95)
+pixel_size = 0.0085
+billboard = 1
+double_sided = false
+modulate = Color(0.9137255, 0.8862745, 0.8117647, 1)
+outline_modulate = Color(0.20392157, 0.21960784, 0.2, 1)
+text = "60° SLOPE"
+font_size = 36
+outline_size = 8
+
+[node name="DropSign" type="Label3D" parent="Course" unique_id=935109932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.8416967, -9.55)
+pixel_size = 0.0085
+billboard = 1
+double_sided = false
+modulate = Color(0.9137255, 0.8862745, 0.8117647, 1)
+outline_modulate = Color(0.20392157, 0.21960784, 0.2, 1)
+text = "LEDGE"
+font_size = 36
+outline_size = 8
+
+[node name="Spawn" type="Marker3D" parent="." unique_id=360872336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 4.5)
+
+[node name="Player" parent="." unique_id=527272551 instance=ExtResource("2_0a1j4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 4.5)
+
+[node name="MovementInput" type="Node" parent="." unique_id=1071823618]
+script = ExtResource("3_p24m2")
+
+[node name="FollowRig" type="Node3D" parent="." unique_id=1608984826]
+script = ExtResource("4_vqeo3")
+
+[node name="Camera" type="Camera3D" parent="FollowRig" unique_id=2091541311]
+projection = 1
+current = true
+size = 17.0
+near = 0.15
+far = 80.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1209780688]
+environment = SubResource("Environment_6bhuo")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=909137394]
+transform = Transform3D(0.8290376, 0.4283666, -0.3594423, 0, 0.64278764, 0.76604444, 0.5591929, -0.6350796, 0.53289515, 0, 0, 0)
+light_energy = 0.85
+shadow_enabled = true
+directional_shadow_max_distance = 42.0
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=818675104]
+script = ExtResource("5_m4yo4")
+
+[node name="Panel" type="PanelContainer" parent="Overlay" unique_id=699245652]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w0g7l")
+
+[node name="Readout" type="VBoxContainer" parent="Overlay/Panel" unique_id=1279514533]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Controls" type="Label" parent="Overlay/Panel/Readout" unique_id=246542587]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7490196, 0.7921569, 0.8, 1)
+text = "MOVEMENT LAB   •   Left stick / WASD   •   V / top face button: framing   •   Wheel: zoom   •   R / Back: reset   •   H: hide HUD"
+autowrap_mode = 3
+
+[node name="Diagnostics" type="Label" parent="Overlay/Panel/Readout" unique_id=709798962]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.8980392, 0.81960785, 1)
+autowrap_mode = 3

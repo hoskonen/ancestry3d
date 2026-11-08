@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ck1adpyb0iqco"]
+
+[ext_resource type="Script" path="res://game/characters/character_motor.gd" id="1_xln5q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j06tb"]
+radius = 0.34
+height = 1.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6ad3"]
+albedo_color = Color(0.42352942, 0.27058825, 0.2627451, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i05k5"]
+material = SubResource("StandardMaterial3D_n6ad3")
+top_radius = 0.235
+bottom_radius = 0.3
+height = 1.27
+radial_segments = 9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrbkc"]
+albedo_color = Color(0.73333335, 0.6039216, 0.45882353, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_166ew"]
+material = SubResource("StandardMaterial3D_mrbkc")
+radius = 0.2
+height = 0.4
+radial_segments = 10
+rings = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kepaj"]
+albedo_color = Color(0.91764706, 0.8156863, 0.627451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v8w1g"]
+material = SubResource("StandardMaterial3D_kepaj")
+size = Vector3(0.17, 0.22, 0.075)
+
+[node name="Player" type="CharacterBody3D" unique_id=527272551]
+collision_layer = 2
+floor_constant_speed = true
+floor_snap_length = 0.25
+script = ExtResource("1_xln5q")
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1823867154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_j06tb")
+
+[node name="Visual" type="Node3D" parent="." unique_id=1974625435]
+
+[node name="Coat" type="MeshInstance3D" parent="Visual" unique_id=1468527339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+mesh = SubResource("CylinderMesh_i05k5")
+
+[node name="Head" type="MeshInstance3D" parent="Visual" unique_id=1397258931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
+mesh = SubResource("SphereMesh_166ew")
+
+[node name="FacingBadge" type="MeshInstance3D" parent="Visual" unique_id=1197877175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99, -0.239)
+mesh = SubResource("BoxMesh_v8w1g")
+
+[node name="FollowTarget" type="Marker3D" parent="." unique_id=784124066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)

@@ -11,7 +11,18 @@
 
 ## Initial approach
 
-Use Godot validation and MCP now. Propose GUT for approval when the first meaningful gameplay rules are ready for automated coverage. It fits the existing GDScript project and provides a headless runner without a custom harness. After approval, pin a release and verify on Godot 4.7.2 that a passing test exits successfully, an intentional failure exits nonzero, and the expected tests are discovered. Remove the intentional failure from the deliverable. Keep the chosen runner command and version in this guide once adopted.
+Task 05 adopts GUT 9.7.1 for Godot 4.7.2. The pinned release is vendored under `addons/gut/` with its MIT license. Its CLI works without enabling the editor plugin or connecting Godot MCP. The smoke suite was discovered, exited 0 on a pass and exited 1 with a deliberate failure. The deliberate failure was removed. [Pinned upstream release](https://github.com/bitwes/Gut/releases/tag/v9.7.1)
+
+The upstream archive contains an unused `menu_manager.gd.uid` with no corresponding script. The project omits that orphaned sidecar so Godot project validation stays clean.
+
+From the project root, use the Godot console executable in place of `godot` if it is unavailable on PATH. Import after a fresh checkout or when engine class registrations change.
+
+~~~powershell
+godot --headless --path . --import
+godot --headless --path . -s res://addons/gut/gut_cmdln.gd -gexit
+~~~
+
+`.gutconfig.json` discovers unit and integration suites recursively. Use `-gtest=res://tests/unit/test_runner_smoke.gd` to run only the runner smoke check. Check the summary as well as the exit status because an early runner initialization error can exit before it executes any tests.
 
 ## Coverage and organization
 
