@@ -32,10 +32,46 @@ func test_wall_blocks_forward_motion_and_allows_tangent_motion() -> void:
 	await _drive(Vector3.RIGHT, 40)
 	assert_between(_player.position.x, 2.35, 2.49)
 	assert_lt(_player.actual_horizontal_speed, 0.05)
+	await get_tree().process_frame
+	assert_eq(_visual_animation().current_animation, "Idle_02", "Blocked movement should play idle")
 	var wall_contact_z := _player.position.z
 	await _drive(Vector3(1, 0, -1).normalized(), 32)
 	assert_between(_player.position.x, 2.35, 2.49)
 	assert_lt(_player.position.z, wall_contact_z - 0.8)
+
+
+func test_imported_visual_uses_resolved_speed_for_locomotion() -> void:
+	await _place(Vector3(0, 0.03, 4.5))
+	var visual := _player.get_node("Visual") as Node3D
+	var model := visual.get_node("WandererModel") as Node3D
+	var skeleton := model.find_children("*", "Skeleton3D", true, false)[0] as Skeleton3D
+	var animation := _visual_animation()
+	assert_eq(skeleton.get_bone_count(), 72)
+	assert_eq(animation.get_animation(&"Idle_02").loop_mode, Animation.LOOP_LINEAR)
+	assert_eq(animation.get_animation(&"Walking").loop_mode, Animation.LOOP_LINEAR)
+	assert_eq(animation.get_animation(&"Running").loop_mode, Animation.LOOP_LINEAR)
+	assert_eq(animation.current_animation, "Idle_02")
+	assert_gt(animation.current_animation_position, 0.0)
+	await _drive(Vector3.FORWARD * 0.4, 15)
+	await get_tree().process_frame
+	assert_eq(animation.current_animation, "Walking")
+	assert_gt(animation.current_animation_position, 0.0)
+	var slow_rate := animation.speed_scale
+	await _drive(Vector3.FORWARD * 0.65, 15)
+	await get_tree().process_frame
+	assert_eq(animation.current_animation, "Walking")
+	assert_gt(animation.speed_scale, slow_rate)
+	await _drive(Vector3.FORWARD, 25)
+	await get_tree().process_frame
+	assert_eq(animation.current_animation, "Running")
+	assert_gt(model.global_basis.z.normalized().dot(Vector3.FORWARD), 0.99)
+	await _drive(Vector3.ZERO, 24)
+	await get_tree().process_frame
+	assert_eq(animation.current_animation, "Idle_02")
+
+
+func _visual_animation() -> AnimationPlayer:
+	return _player.get_node("Visual/WandererModel/AnimationPlayer") as AnimationPlayer
 
 
 func test_walkable_ramp_and_ledge_landing() -> void:

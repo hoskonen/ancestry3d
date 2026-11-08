@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ck1adpyb0iqco"]
 
-[ext_resource type="Script" path="res://game/characters/character_motor.gd" id="1_xln5q"]
+[ext_resource type="Script" uid="uid://bopu66fisjugd" path="res://game/characters/character_motor.gd" id="1_xln5q"]
+[ext_resource type="Script" uid="uid://d34bqjaghbkwt" path="res://game/characters/weary_wanderer_visual.gd" id="2_j06tb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j06tb"]
 radius = 0.34
@@ -44,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_j06tb")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1974625435]
+script = ExtResource("2_j06tb")
 
 [node name="Coat" type="MeshInstance3D" parent="Visual" unique_id=1468527339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)

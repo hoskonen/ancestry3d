@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://s00dhpru2uax"]
+
+[ext_resource type="Script" path="res://game/characters/weary_wanderer_visual.gd" id="1_1y2s2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mft2c"]
+albedo_color = Color(0.33333334, 0.3529412, 0.34117648, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hdg2x"]
+material = SubResource("StandardMaterial3D_mft2c")
+size = Vector2(12, 12)
+
+[sub_resource type="Environment" id="Environment_p72ms"]
+background_mode = 1
+background_color = Color(0.19215687, 0.21960784, 0.2509804, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.8666667, 0.8901961, 0.93333334, 1)
+ambient_light_energy = 0.7
+reflected_light_source = 1
+
+[node name="WandererInspection" type="Node3D" unique_id=1814492411]
+
+[node name="Visual" type="Node3D" parent="." unique_id=1631245600]
+script = ExtResource("1_1y2s2")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=766876728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+mesh = SubResource("PlaneMesh_hdg2x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=851074215]
+environment = SubResource("Environment_p72ms")
+
+[node name="KeyLight" type="DirectionalLight3D" parent="." unique_id=566463225]
+transform = Transform3D(-0.81915206, -0.4262504, 0.38379753, 0, 0.66913056, 0.74314487, -0.57357645, 0.6087487, -0.54811966, 0, 0, 0)
+light_color = Color(0.972549, 0.9098039, 0.8117647, 1)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 18.0
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1740626828]
+transform = Transform3D(-0.9066763, -0.09130009, 0.4118281, 0, 0.976296, 0.21643962, -0.42182708, 0.19624068, -0.88518447, 2, 1.9, -4.3)
+projection = 1
+current = true
+size = 2.32
