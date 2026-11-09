@@ -7,7 +7,7 @@ const MAX_DISTANCE: float = 8.0
 
 @export_range(-180.0, 180.0, 1.0) var start_yaw: float = 45.0
 @export_range(-15.0, 65.0, 1.0) var start_elevation: float = 16.0
-@export_range(2.0, 8.0, 0.1) var start_distance: float = 4.6
+@export_range(2.0, 8.0, 0.1) var start_distance: float = 4.0
 @export_range(15.0, 360.0, 1.0) var stick_sensitivity: float = 130.0
 @export_range(0.01, 1.0, 0.01) var mouse_sensitivity: float = 0.18
 @export_range(0.0, 2.0, 0.05) var height_offset: float = 0.65

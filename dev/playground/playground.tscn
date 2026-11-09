@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://do3uqdafp24a0" path="res://game/input/player_movement_input.gd" id="5_5pg6v"]
 [ext_resource type="Script" uid="uid://dccu6pu8rr840" path="res://game/camera/orthographic_follow.gd" id="6_oavld"]
 [ext_resource type="Script" uid="uid://cdqu31blyx204" path="res://dev/playground/playground_debug.gd" id="7_8r08w"]
-[ext_resource type="Script" path="res://dev/playground/third_person_rig.gd" id="8_5lumb"]
+[ext_resource type="Script" uid="uid://chg668rgq2158" path="res://dev/playground/third_person_rig.gd" id="8_5lumb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tp6lj"]
 size = Vector3(96, 0.5, 96)
@@ -301,7 +301,7 @@ theme_override_constants/separation = 4
 [node name="Controls" type="Label" parent="Debug/Panel/Readout" unique_id=1389612959]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.8039216, 0.8156863, 1)
-text = "PLAYGROUND   •   WASD / left stick: move   •   C / R3: camera   •   Right stick / RMB drag: orbit   •   V / top face: iso framing   •   Wheel: zoom   •   N: light   •   R / Back: reset   •   H: HUD"
+text = "PLAYGROUND   •   WASD / left stick: move   •   C / R3: camera   •   Right stick / RMB drag: orbit   •   V / top face: iso framing   •   Wheel: zoom   •   N: jump time   •   P: pause clock   •   R / Back: reset   •   H: HUD"
 autowrap_mode = 3
 
 [node name="Diagnostics" type="Label" parent="Debug/Panel/Readout" unique_id=1583502790]
@@ -313,7 +313,7 @@ autowrap_mode = 3
 script = ExtResource("8_5lumb")
 
 [node name="SpringArm" type="SpringArm3D" parent="ThirdPersonRig" unique_id=816977922]
-spring_length = 4.6
+spring_length = 4.0
 margin = 0.15
 
 [node name="Camera" type="Camera3D" parent="ThirdPersonRig/SpringArm" unique_id=1441366466]

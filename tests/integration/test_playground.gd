@@ -123,8 +123,8 @@ func test_spring_arm_retracts_at_hall_and_reset_restores_clear_boom() -> void:
 	assert_true(_scene.is_third_person)
 	assert_almost_eq(rig.yaw_degrees, 45.0, 0.01)
 	assert_almost_eq(rig.elevation_degrees, 16.0, 0.01)
-	assert_almost_eq(rig.requested_distance(), 4.6, 0.01)
-	assert_almost_eq(rig.obstruction_distance(), 4.6, 0.04)
+	assert_almost_eq(rig.requested_distance(), 4.0, 0.01)
+	assert_almost_eq(rig.obstruction_distance(), 4.0, 0.04)
 
 
 func _animation() -> AnimationPlayer:

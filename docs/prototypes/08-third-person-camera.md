@@ -14,7 +14,7 @@ Open [playground.tscn](../../dev/playground/playground.tscn) and press F6. The s
 
 The new [rig](../../dev/playground/third_person_rig.gd) is a playground sibling of the unchanged isometric rig. It uses a perspective camera directly below a `SpringArm3D`. The boom tests world layer 1 and excludes the player capsule. Both rigs use the existing follow marker. The playground selects the heading before sampling movement intent, so the motor, collider, and animation remain independent of the camera mode. [Godot spring arm guide](https://docs.godotengine.org/en/4.7/tutorials/3d/spring_arm.html)
 
-The Inspector exposes the initial 4.6 m distance, 16° elevation, 45° yaw, 0.65 m height offset, 130°/s full-stick sensitivity and 0.18°/pixel mouse sensitivity. The camera uses a 65° field of view. Orbit elevation is limited to −15° through 65°, the stick uses a 0.22 deadzone, and wheel distance is limited to 2–8 m. The HUD displays requested and unobstructed arm lengths as well as yaw and elevation.
+The Inspector exposes the initial 4.0 m distance, 16° elevation, 45° yaw, 0.65 m height offset, 130°/s full-stick sensitivity and 0.18°/pixel mouse sensitivity. The camera uses a 65° field of view. Orbit elevation is limited to −15° through 65°, the stick uses a 0.22 deadzone, and wheel distance is limited to 2–8 m. The HUD displays requested and unobstructed arm lengths as well as yaw and elevation.
 
 Switching is immediate and retains the settings for each view until reset. Near walls, the arm retracts and may bring the camera close to the player. The world collision proxies leave eaves and canopies outside the cast, so visual overlap remains possible. The mouse remains uncaptured, which limits a drag at the viewport edge.
 
